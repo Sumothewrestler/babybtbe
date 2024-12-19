@@ -1,5 +1,16 @@
 from django.db import models
 
+class Client(models.Model):
+    name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+
 class Business(models.Model):
     name = models.CharField(max_length=255)
 
@@ -44,6 +55,7 @@ class Transaction(models.Model):
     ]
 
     transaction_date = models.DateField()
+    client = models.ForeignKey('Client', on_delete=models.CASCADE)
     business = models.ForeignKey(Business, on_delete=models.CASCADE)
     type = models.ForeignKey(Type, on_delete=models.CASCADE)
     ledger = models.ForeignKey(Ledger, on_delete=models.CASCADE)

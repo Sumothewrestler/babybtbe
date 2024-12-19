@@ -2,11 +2,18 @@ from rest_framework import viewsets, filters
 from django_filters import rest_framework as django_filters
 from django.db.models import Q
 from datetime import datetime
-from .models import Business, Type, Ledger, Head, Mode, Transaction
+from .models import Business, Type, Ledger, Head, Mode, Transaction, Client
 from .serializers import (
     BusinessSerializer, TypeSerializer, LedgerSerializer,
-    HeadSerializer, ModeSerializer, TransactionSerializer
+    HeadSerializer, ModeSerializer, TransactionSerializer, ClientSerializer
 )
+
+class ClientViewSet(viewsets.ModelViewSet):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    filterset_fields = ['name']
+    search_fields = ['name']
+    ordering_fields = ['name', 'created_at']
 
 class BusinessViewSet(viewsets.ModelViewSet):
     queryset = Business.objects.all()

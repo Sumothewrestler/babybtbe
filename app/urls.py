@@ -2,10 +2,11 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (
     BusinessViewSet, TypeViewSet, LedgerViewSet,
-    HeadViewSet, ModeViewSet, TransactionViewSet
+    HeadViewSet, ModeViewSet, TransactionViewSet, ClientViewSet
 )
 
 router = DefaultRouter()
+router.register(r'clients', ClientViewSet)
 router.register(r'businesses', BusinessViewSet)
 router.register(r'types', TypeViewSet)
 router.register(r'ledgers', LedgerViewSet)
