@@ -120,12 +120,32 @@ DATABASES = {
     )
 }
 
-# CORS Settings
 CORS_ALLOWED_ORIGINS = [
-    "https://babybt-cxax1mlzx-sumothewrestlers-projects.vercel.app",  # Replace with your frontend domain
-    "http://localhost:3000",
+    "https://babybt.vercel.app",  # Your Vercel frontend domain
+    "http://localhost:3000",      # Local development
 ]
+
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
